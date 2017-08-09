@@ -1,0 +1,5 @@
+<launch>
+
+  <node name="reward_display_node" pkg="reward_display_pkg" type="philTest" output="screen" launch-prefix="gdb -ex run --args"/>
+
+</launch>
