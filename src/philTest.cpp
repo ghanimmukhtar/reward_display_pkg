@@ -39,7 +39,8 @@ int main(int argc, char **argv) {
     ros::init(argc, argv, "reward_display_node");
     ros::NodeHandle n;
 
-    ros::Subscriber button_sub = n.subscribe<std_msgs::Bool>("/babbling_module/ButtonModule_f8_f0_05_f5_cf_96/led", 1, button_cb);
+    //ros::Subscriber button_sub = n.subscribe<std_msgs::Bool>("/babbling_module/ButtonModule_f8_f0_05_f5_cf_96/led", 1, button_cb);
+    ros::Subscriber button_sub = n.subscribe<std_msgs::Bool>("/babbling_module/ButtonModule_f8_f0_05_f5_cf_96/button_pressed", 1, button_cb);
 
     ros::AsyncSpinner my_spinner(4);
     my_spinner.start();
@@ -134,7 +135,7 @@ int main(int argc, char **argv) {
     while(ros::ok()){
         //Wait for server to start so that the client can connect
         this_thread::sleep_for(chrono::milliseconds(10));
-        //ros::spin();
+        ros::spinOnce();
     }
 
 
